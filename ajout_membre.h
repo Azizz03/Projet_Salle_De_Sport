@@ -22,6 +22,7 @@ void supprimer_membre(int id);
 void modifier_membre(Membre m);
 void afficher_membre();
 membre rechercher_membre(int id);
+#endif
 
 
 
