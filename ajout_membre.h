@@ -6,6 +6,8 @@ typedef struct {
 int id;
 char nom[30];
 char prenom[30];
+char centre[40];
+char email[30];
 int jour;
 char mois[30];
 int annee;
