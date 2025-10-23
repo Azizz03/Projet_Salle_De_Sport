@@ -9,12 +9,16 @@
 
 // Structure pour un participant
 typedef struct {
-    char nom et prénom[50];
+    char nom et prÃ©nom[50];
     int age;
-    char sexe[10]
+    char sexe[10];
+    int choix;
 
+    switch(choix) {
+        case 1: strcpy(sexe, "Homme"); break;
+        case 2: strcpy(sexe, "Femme"); break;
 
-    char nom évènement [50];
+    char nom Ã©vÃ¨nement [50];
     char type evenement[11];
     char date[40];
     int heure;
@@ -32,3 +36,4 @@ void validation_event(event)
 void annulation_event(event)
 
 #endif // EVENT_MEMBER_H
+
