@@ -1,0 +1,1 @@
+id=100 nom=aziz prenom=hamadi jour=20 mois=Decembre annee=2003 type_abo=trimestriel poids=50.200001 masse_muscu=5.500000 masse_graisseuse=15.200000 sexe=H taille=190 programme=... objectif=...,descr_maladie=...,numero_tel=+21694273829,email=aziz.bentekaya@gmail.com,centre=centreA
