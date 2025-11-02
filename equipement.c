@@ -40,7 +40,7 @@ int modifier_equipement(FILE *f, Equipement e) {
     remove("equipements.txt");
     rename("temp.txt", "equipements.txt");
     return trouve;
-}
+} 
 
 
 int supprimer_equipement(FILE *f, const char *id) {
@@ -81,5 +81,5 @@ int rechercher_equipement(FILE *f, const char *id, Equipement *e) {
             return 1;
     }
     return 0;
-}
+} //Sauvegardé
 
