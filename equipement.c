@@ -1,84 +1,85 @@
 #include "equipement.h"
-#include <stdio.h>
 #include <string.h>
 
-void ajouter_equipement(Equipement e) {
-    FILE *f = fopen("equipements.txt", "a");
-    if (f != NULL) {
-        fprintf(f, "%s %s %s %s %d %s %s %s\n",
-                e.id, e.nom, e.centre, e.categorie,
-                e.quantite, e.etat, e.salle, e.couleur);
-        fclose(f);
-    }
+int ajouter_equipement(FILE *f, Equipement e) {
+    if (f == NULL)
+        return 0;
+
+    fprintf(f, "%s %s %s %s %d %s %s %s\n",
+            e.id, e.nom, e.centre, e.categorie,
+            e.quantite, e.etat, e.salle, e.couleur);
+    return 1;
 }
 
-void supprimer_equipement(char id[]) {
+
+int modifier_equipement(FILE *f, Equipement e) {
+    FILE *temp = fopen("temp.txt", "w");
+    if (f == NULL || temp == NULL)
+        return 0;
+
+    Equipement ex;
+    int trouve = 0;
+    while (fscanf(f, "%s %s %s %s %d %s %s %s",
+                  ex.id, ex.nom, ex.centre, ex.categorie,
+                  &ex.quantite, ex.etat, ex.salle, ex.couleur) != EOF) {
+
+        if (strcmp(ex.id, e.id) == 0) {
+            fprintf(temp, "%s %s %s %s %d %s %s %s\n",
+                    e.id, e.nom, e.centre, e.categorie,
+                    e.quantite, e.etat, e.salle, e.couleur);
+            trouve = 1;
+        } else {
+            fprintf(temp, "%s %s %s %s %d %s %s %s\n",
+                    ex.id, ex.nom, ex.centre, ex.categorie,
+                    ex.quantite, ex.etat, ex.salle, ex.couleur);
+        }
+    }
+
+    fclose(f);
+    fclose(temp);
+    remove("equipements.txt");
+    rename("temp.txt", "equipements.txt");
+    return trouve;
+} 
+
+
+int supprimer_equipement(FILE *f, const char *id) {
+    FILE *temp = fopen("temp.txt", "w");
+    if (f == NULL || temp == NULL)
+        return 0;
+
     Equipement e;
-    FILE *f = fopen("equipements.txt", "r");
-    FILE *f2 = fopen("temp.txt", "w");
+    int supprime = 0;
+    while (fscanf(f, "%s %s %s %s %d %s %s %s",
+                  e.id, e.nom, e.centre, e.categorie,
+                  &e.quantite, e.etat, e.salle, e.couleur) != EOF) {
 
-    if (f != NULL && f2 != NULL) {
-        while (fscanf(f, "%s %s %s %s %d %s %s %s",
-                      e.id, e.nom, e.centre, e.categorie,
-                      &e.quantite, e.etat, e.salle, e.couleur) != EOF) {
-            if (strcmp(e.id, id) != 0) {
-                fprintf(f2, "%s %s %s %s %d %s %s %s\n",
-                        e.id, e.nom, e.centre, e.categorie,
-                        e.quantite, e.etat, e.salle, e.couleur);
-            }
-        }
-        fclose(f);
-        fclose(f2);
-        remove("equipements.txt");
-        rename("temp.txt", "equipements.txt");
+        if (strcmp(e.id, id) != 0)
+            fprintf(temp, "%s %s %s %s %d %s %s %s\n",
+                    e.id, e.nom, e.centre, e.categorie,
+                    e.quantite, e.etat, e.salle, e.couleur);
+        else
+            supprime = 1;
     }
+
+    fclose(f);
+    fclose(temp);
+    remove("equipements.txt");
+    rename("temp.txt", "equipements.txt");
+    return supprime;
 }
 
-void modifier_equipement(Equipement e_modif) {
-    Equipement e;
-    FILE *f = fopen("equipements.txt", "r");
-    FILE *f2 = fopen("temp.txt", "w");
+int rechercher_equipement(FILE *f, const char *id, Equipement *e) {
+    if (f == NULL)
+        return 0;
 
-    if (f != NULL && f2 != NULL) {
-        while (fscanf(f, "%s %s %s %s %d %s %s %s",
-                      e.id, e.nom, e.centre, e.categorie,
-                      &e.quantite, e.etat, e.salle, e.couleur) != EOF) {
-            if (strcmp(e.id, e_modif.id) == 0) {
-                // Équipement trouvé → on le remplace
-                fprintf(f2, "%s %s %s %s %d %s %s %s\n",
-                        e_modif.id, e_modif.nom, e_modif.centre,
-                        e_modif.categorie, e_modif.quantite,
-                        e_modif.etat, e_modif.salle, e_modif.couleur);
-            } else {
-                // Sinon on garde la ligne originale
-                fprintf(f2, "%s %s %s %s %d %s %s %s\n",
-                        e.id, e.nom, e.centre, e.categorie,
-                        e.quantite, e.etat, e.salle, e.couleur);
-            }
-        }
-        fclose(f);
-        fclose(f2);
-        remove("equipements.txt");
-        rename("temp.txt", "equipements.txt");
+    while (fscanf(f, "%s %s %s %s %d %s %s %s",
+                  e->id, e->nom, e->centre, e->categorie,
+                  &e->quantite, e->etat, e->salle, e->couleur) != EOF) {
+
+        if (strcmp(e->id, id) == 0)
+            return 1;
     }
-}
-
-Equipement rechercher_equipement(char id[]) {
-    Equipement e, e_vide = {"", "", "", "", 0, "", "", ""};
-    FILE *f = fopen("equipements.txt", "r");
-
-    if (f != NULL) {
-        while (fscanf(f, "%s %s %s %s %d %s %s %s",
-                      e.id, e.nom, e.centre, e.categorie,
-                      &e.quantite, e.etat, e.salle, e.couleur) != EOF) {
-            if (strcmp(e.id, id) == 0) {
-                fclose(f);
-                return e;
-            }
-        }
-        fclose(f);
-    }
-    return e_vide; 
-}
-
+    return 0;
+} //Sauvegardé
 
