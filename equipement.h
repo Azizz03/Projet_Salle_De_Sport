@@ -20,6 +20,6 @@ int ajouter_equipement(FILE *f, Equipement e);
 int modifier_equipement(FILE *f, Equipement e);
 int supprimer_equipement(FILE *f, const char *id);
 int rechercher_equipement(FILE *f, const char *id, Equipement *e);
-
+//Sauvegardé
 #endif
 
