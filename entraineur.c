@@ -27,7 +27,7 @@ int modifier(char *filename, int id, entraineur nouv) {
                       e.cours_privee, e.centre) != EOF) {
             if (e.id == id) {
                 fprintf(f2, "%d %s %s %s %.2f %s %s %s %s %s %s\n",
-                        nouv.id, nouv.nom, nouv.prenom, nouv.specialite, nouv.salaire,
+                        e.id, nouv.nom, nouv.prenom, nouv.specialite, nouv.salaire,
                         nouv.sexe, nouv.date_inscription, nouv.email, nouv.num_tel,
                         nouv.cours_privee, nouv.centre);
                 tr = 1;
