@@ -1,6 +1,6 @@
-prog:ajout_membre_new.o main_membre_new.o
-	gcc ajout_membre_new.o main_membre_new.o -o prog
-main_membre.o:main_membre_new.c
-	gcc -c main_membre_new.c
-ajout_membre_new.o:ajout_membre_new.c
-	gcc -c ajout_membre_new.c
+prog:membre.o main_membre.o
+	gcc membre.o main_membre.o -o prog
+main_membre.o:main_membre.c
+	gcc -c main_membre.c
+ajout_membre_new.o:membre.c
+	gcc -c membre.c

@@ -6,12 +6,12 @@
 int ajouter_membre(char *filename, membre m) {
     FILE *f = fopen(filename, "a");
     if(f != NULL) {
-        fprintf(f, "%d %s %s %s %s %d %s %d %s %.2f %.2f %.2f %s %d %s %s %s %s\n",
+        fprintf(f, "%d %s %s %s %s %d %s %d %s %.2f %.2f %.2f %s %d %s %s %s %s %d\n",
                 m.id, m.nom, m.prenom, m.centre, m.email,
                 m.jour, m.mois, m.annee, m.type_abonnement,
                 m.poids, m.masse_musculaire, m.masse_graisseuse,
                 m.sexe, m.taille, m.programme, m.objectif,
-                m.descr_maladie, m.num_tel);
+                m.descr_maladie, m.num_tel,m.duree_prog);
         fclose(f);
         return 1;
     }
@@ -28,27 +28,27 @@ int modifier_membre(char *filename, int id, membre nouv) {
     if (f == NULL || aux == NULL)
         return 0;
 
-    while (fscanf(f, "%d %s %s %s %s %d %s %d %s %f %f %f %s %d %s %s %s %s",
+    while (fscanf(f, "%d %s %s %s %s %d %s %d %s %f %f %f %s %d %s %s %s %s %d",
                   &m.id, m.nom, m.prenom, m.centre, m.email,
                   &m.jour, m.mois, &m.annee, m.type_abonnement,
                   &m.poids, &m.masse_musculaire, &m.masse_graisseuse,
                   m.sexe, &m.taille, m.programme, m.objectif,
-                  m.descr_maladie, m.num_tel) != EOF) {
+                  m.descr_maladie, m.num_tel, &m.duree_prog) != EOF) {
         if (m.id == id) {
-            fprintf(aux, "%d %s %s %s %s %d %s %d %s %.2f %.2f %.2f %s %d %s %s %s %s\n",
-                    nouv.id, nouv.nom, nouv.prenom, nouv.centre, nouv.email,
+            fprintf(aux, "%d %s %s %s %s %d %s %d %s %.2f %.2f %.2f %s %d %s %s %s %s %d\n",
+                    m.id, nouv.nom, nouv.prenom, nouv.centre, nouv.email,
                     nouv.jour, nouv.mois, nouv.annee, nouv.type_abonnement,
                     nouv.poids, nouv.masse_musculaire, nouv.masse_graisseuse,
                     nouv.sexe, nouv.taille, nouv.programme, nouv.objectif,
-                    nouv.descr_maladie, nouv.num_tel);
+                    nouv.descr_maladie, nouv.num_tel, nouv.duree_prog);
             trouve = 1;
         } else {
-            fprintf(aux, "%d %s %s %s %s %d %s %d %s %.2f %.2f %.2f %s %d %s %s %s %s\n",
+            fprintf(aux, "%d %s %s %s %s %d %s %d %s %.2f %.2f %.2f %s %d %s %s %s %s %d\n",
                     m.id, m.nom, m.prenom, m.centre, m.email,
                     m.jour, m.mois, m.annee, m.type_abonnement,
                     m.poids, m.masse_musculaire, m.masse_graisseuse,
                     m.sexe, m.taille, m.programme, m.objectif,
-                    m.descr_maladie, m.num_tel);
+                    m.descr_maladie, m.num_tel, m.duree_prog);
         }
     }
 
@@ -68,19 +68,19 @@ int supprimer_membre(char *filename, int id) {
     if (f == NULL || aux == NULL)
         return 0;
 
-    while (fscanf(f, "%d %s %s %s %s %d %s %d %s %f %f %f %s %d %s %s %s %s",
+    while (fscanf(f, "%d %s %s %s %s %d %s %d %s %f %f %f %s %d %s %s %s %s %d",
                   &m.id, m.nom, m.prenom, m.centre, m.email,
                   &m.jour, m.mois, &m.annee, m.type_abonnement,
                   &m.poids, &m.masse_musculaire, &m.masse_graisseuse,
                   m.sexe, &m.taille, m.programme, m.objectif,
-                  m.descr_maladie, m.num_tel) != EOF) {
+                  m.descr_maladie, m.num_tel, &m.duree_prog) != EOF) {
         if (m.id != id) {
-            fprintf(aux, "%d %s %s %s %s %d %s %d %s %.2f %.2f %.2f %s %d %s %s %s %s\n",
+            fprintf(aux, "%d %s %s %s %s %d %s %d %s %.2f %.2f %.2f %s %d %s %s %s %s %d\n",
                     m.id, m.nom, m.prenom, m.centre, m.email,
                     m.jour, m.mois, m.annee, m.type_abonnement,
                     m.poids, m.masse_musculaire, m.masse_graisseuse,
                     m.sexe, m.taille, m.programme, m.objectif,
-                    m.descr_maladie, m.num_tel);
+                    m.descr_maladie, m.num_tel, m.duree_prog);
         } else {
             trouve = 1;
         }
@@ -101,12 +101,12 @@ membre chercher_membre(char *filename, int id) {
     if (f == NULL)
         return vide;
 
-    while (fscanf(f, "%d %s %s %s %s %d %s %d %s %f %f %f %s %d %s %s %s %s",
+    while (fscanf(f, "%d %s %s %s %s %d %s %d %s %f %f %f %s %d %s %s %s %s %d",
                   &m.id, m.nom, m.prenom, m.centre, m.email,
                   &m.jour, m.mois, &m.annee, m.type_abonnement,
                   &m.poids, &m.masse_musculaire, &m.masse_graisseuse,
                   m.sexe, &m.taille, m.programme, m.objectif,
-                  m.descr_maladie, m.num_tel) != EOF) {
+                  m.descr_maladie, m.num_tel, &m.duree_prog) != EOF) {
         if (m.id == id) {
             fclose(f);
             return m;
@@ -127,12 +127,12 @@ void afficher_membre(char *filename) {
     }
     
     printf("\n=== LISTE DES MEMBRES ===\n");
-    while (fscanf(f, "%d %s %s %s %s %d %s %d %s %f %f %f %s %d %s %s %s %s",
+    while (fscanf(f, "%d %s %s %s %s %d %s %d %s %f %f %f %s %d %s %s %s %s %d",
                   &m.id, m.nom, m.prenom, m.centre, m.email,
                   &m.jour, m.mois, &m.annee, m.type_abonnement,
                   &m.poids, &m.masse_musculaire, &m.masse_graisseuse,
                   m.sexe, &m.taille, m.programme, m.objectif,
-                  m.descr_maladie, m.num_tel) != EOF) {
+                  m.descr_maladie, m.num_tel, &m.duree_prog) != EOF) {
         printf("ID: %d\n", m.id);
         printf("Nom: %s\n", m.nom);
         printf("Prenom: %s\n", m.prenom);
@@ -149,6 +149,7 @@ void afficher_membre(char *filename) {
         printf("Objectif: %s\n", m.objectif);
         printf("Maladies: %s\n", m.descr_maladie);
         printf("Telephone: %s\n", m.num_tel);
+	printf("duree programme: %d\n", m.duree_prog);
         printf("---------------------------\n");
     }
     

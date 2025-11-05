@@ -1,6 +1,8 @@
 #ifndef MEMBRE_H_INCLUDED
 #define MEMBRE_H_INCLUDED
 
+
+
 typedef struct {
     int id;
     char nom[30];
@@ -20,6 +22,8 @@ typedef struct {
     char objectif[40];
     char descr_maladie[100];
     char num_tel[20];
+    int duree_prog;
+    
 } membre;
 
 int ajouter_membre(char *filename, membre m);
@@ -27,5 +31,6 @@ int supprimer_membre(char *filename, int id);
 int modifier_membre(char *filename, int id, membre nouv);
 membre chercher_membre(char *filename, int id);
 void afficher_membre(char *filename);
+
 
 #endif
