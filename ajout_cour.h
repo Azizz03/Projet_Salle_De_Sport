@@ -1,5 +1,6 @@
 #ifndef COUR_H_INCLUDED
 #define COUR_H_INCLUDED
+#include <gtk/gtk.h>
 #include<stdio.h>
 typedef struct
 {
@@ -8,10 +9,11 @@ typedef struct
    char restrictions_medicales[100],objectif[20];
    char type_equipement[20];
 }cour;
-void ajouter_cour(cour c);
-void supprimer_cour(cour id);
-void modifier_cour(cour c);
-cour  afficher_cour();
-cour recherche_entraineur(int id);
+int ajouter_cour(char *filename,cour c);
+int supprimer_cour( char *filename,int id );
+void modifier_cour(char *filename ,int id ,cour nouv);
+int siscrire(char *filename,int id_cour,char id_membre[]);
+int reserver (char*filename ,int id_cour ,char id_coach[]);
+cour chercher_cour(char *filename ,int id );
 #endif
 
