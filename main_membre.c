@@ -40,7 +40,7 @@ if(x == 1)
        printf("Echec modification\n");
 break; 
 case 4:
-scanf("%d",id);    
+scanf("%d",&id);    
 x = supprimer_membre("membre.txt", id);
    if(x == 1)
      printf("Suppression de membre avec succes\n");
