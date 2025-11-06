@@ -24,7 +24,7 @@ int modifier_event(char *filename, int id, event nouv);
 int supprimer_event(char *filename, int id);
 event chercher_event(char *filename, int id);
 
-/*typedef struct
+typedef struct
 {
     int id_membre;
     char nom[30];
@@ -44,6 +44,7 @@ event chercher_event(char *filename, int id);
 int ajouter_participation(char *filename, participation p);
 int supprimer_participation(char *filename, int id_membre, int id_event);
 participation chercher_participation(char *filename, int id_membre, int id_event);
-*/
+
 #endif // EVENT_H_INCLUDED
+
 
