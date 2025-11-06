@@ -36,8 +36,12 @@ int main()
         printf("Événement introuvable\n");
     else
         printf("Événement trouvé : %s - %s\n", e3.nom, e3.type);
-
-    return 0;
+    x = afficher_event("events.txt", 1, e2);
+        if (x == 1)
+           printf("Affichage avec succès\n");
+        else
+           printf("Erreur d'Affichage \n");
+          
     // --- TEST PARTICIPATIONS ---
     participation p1 = {101, "Ali", "Ben", "Homme", 1, "YogaMatinal", "Sport", 10, 11, 2025, 7, 12.00, "SalleZen"};
     participation p2 = {102, "Sara", "Kefi", "Femme", 2, "ZumbaParty", "CoursCollectif", 12, 11, 2025, 18, 8.00, "SalleDance"};
@@ -47,7 +51,7 @@ int main()
 
     printf("Participations ajoutées.\n");
 
-    // --- RECHERCHE ---
+    /*// --- RECHERCHE ---
     participation p3 = chercher_participation("participations.txt", 101, 1);
     if (p3.id_membre != -1)
         printf("Participation trouvée : %s %s à %s (%s)\n", p3.nom, p3.prenom, p3.nom_event, p3.salle);
@@ -59,8 +63,7 @@ int main()
     if (x == 1)
         printf("Participation supprimée.\n");
     else
-        printf("Aucune participation supprimée.\n");
+        printf("Aucune participation supprimée.\n");*/s
 
     return 0;
 }
-
