@@ -1,4 +1,6 @@
-#include "cour.h"
+#include "ajout_cour.h"
+#include "entraineur.h"
+#include "membre.h"
 #include <string.h>
 
 int ajouter(char *filename, cour c)
