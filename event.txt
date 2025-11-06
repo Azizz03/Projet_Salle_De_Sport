@@ -1,0 +1,10 @@
+1 YogaMatinal CoursCollectif 10 11 2025 7 30 8 30 12.00 SalleZen
+2 CardioIntense Entrainement 11 11 2025 9 0 10 0 10.00 SalleA
+3 ZumbaParty CoursCollectif 12 11 2025 18 0 19 0 8.00 SalleDance
+4 MuscuLibre AccèsLibre 13 11 2025 14 0 20 0 5.00 SalleForce
+5 CrossFit Challenge 14 11 2025 17 30 19 0 15.00 SalleBox
+6 PilatesRelax BienEtre 15 11 2025 8 0 9 0 9.50 SalleZen
+7 SpinningBoost Cardio 16 11 2025 18 0 19 0 10.00 SalleBike
+8 BodyPump Force 17 11 2025 19 0 20 0 11.00 SalleA
+9 BoxingTraining Combat 18 11 2025 17 0 18 30 13.00 SalleFight
+10 StretchingSoir BienEtre 19 11 2025 20 0 21 0 7.00 SalleZen
