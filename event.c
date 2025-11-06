@@ -111,6 +111,52 @@ event chercher_event(char *filename, int id)
         e.id = -1;
     return e;}
 }
+int afficher_event(char *filename)
+{
+    FILE *f = fopen(filename, "r");
+    event e;
+    int trouve = 0;
+
+    if (f == NULL)
+    {
+        printf(" Erreur : impossible d’ouvrir le fichier %s pour lecture.\n", filename);
+        return 0;
+    }
+
+    printf(" Liste des événements enregistrés :\n");
+    printf("------------------------------------------------------------\n");
+
+    while (fscanf(f, "%d %s %s %d %d %d %d %d %d %d %f %s %d",
+                  &e.id, e.nom, e.type,s
+                  &e.jour, &e.mois, &e.annee,
+                  &e.heure_debut_h, &e.heure_debut_m,
+                  &e.heure_fin_h, &e.heure_fin_m,
+                  &e.prix, e.salle, &e.capacite) != EOF)
+    {
+        trouve = 1;
+        printf("ID : %d\n", e.id);
+        printf("Nom : %s\n", e.nom);
+        printf("Type : %s\n", e.type);
+        printf("Date : %02d/%02d/%04d\n", e.jour, e.mois, e.annee);
+        printf("Heure : %02d:%02d - %02d:%02d\n",
+               e.heure_debut_h, e.heure_debut_m,
+               e.heure_fin_h, e.heure_fin_m);
+        printf("Salle : %s\n", e.salle);
+        printf("Prix : %.2f DT\n", e.prix);
+        printf("Capacité : %d places\n", e.capacite);
+        printf("------------------------------------------------------------\n");
+    }
+
+    fclose(f);
+
+    if (!trouve)
+    {
+        printf("  Aucun événement trouvé dans le fichier %s.\n", filename);
+        return 0;
+    }
+
+    return 1;
+}
 
 /////////////////////////////
 // GESTION DES PARTICIPATIONS
@@ -202,4 +248,5 @@ int ajouter_participation(char *filename, participation p)
         p.id_membre = -1;
     return p;
 }
+
 
