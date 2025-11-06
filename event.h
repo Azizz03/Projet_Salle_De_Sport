@@ -4,9 +4,9 @@
 #include "membre.h"
 typedef struct
 {
-    int id;
-    char nom[50];
-    char type[30];
+    int id_event;
+    char nom_event[50];
+    char type_event[30];
     int jour;
     int mois;
     int annee;
@@ -45,3 +45,4 @@ int supprimer_participation(char *filename, int id_membre, int id_event);
 participation chercher_participation(char *filename, int id_membre, int id_event);
 
 #endif // EVENT_H_INCLUDED
+
