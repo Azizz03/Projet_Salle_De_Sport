@@ -39,13 +39,13 @@ int main()
 
     return 0;
     // --- TEST PARTICIPATIONS ---
-   // participation p1 = {101, "Ali", "Ben", "Homme", 1, "YogaMatinal", "Sport", 10, 11, 2025, 7, 12.00, "SalleZen"};
-    //participation p2 = {102, "Sara", "Kefi", "Femme", 2, "ZumbaParty", "CoursCollectif", 12, 11, 2025, 18, 8.00, "SalleDance"};
+    participation p1 = {101, "Ali", "Ben", "Homme", 1, "YogaMatinal", "Sport", 10, 11, 2025, 7, 12.00, "SalleZen"};
+    participation p2 = {102, "Sara", "Kefi", "Femme", 2, "ZumbaParty", "CoursCollectif", 12, 11, 2025, 18, 8.00, "SalleDance"};
 
-   // ajouter_participation("participations.txt", p1);
-    //ajouter_participation("participations.txt", p2);
+    ajouter_participation("participations.txt", p1);
+    ajouter_participation("participations.txt", p2);
 
-    //printf("Participations ajoutées.\n");
+    printf("Participations ajoutées.\n");
 
     // --- RECHERCHE ---
     participation p3 = chercher_participation("participations.txt", 101, 1);
@@ -63,3 +63,4 @@ int main()
 
     return 0;
 }
+
