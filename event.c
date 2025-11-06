@@ -116,7 +116,7 @@ event chercher_event(char *filename, int id)
 // GESTION DES PARTICIPATIONS
 /////////////////////////////
 
-/*int ajouter_participation(char *filename, participation p)
+int ajouter_participation(char *filename, participation p)
 {
     static int CAPACITE_MAX = 50;
 
@@ -197,9 +197,10 @@ participation chercher_participation(char *filename, int id_membre, int id_event
             }
         }
         fclose(f);
-    */}
+    }
     if (!tr)
         p.id_membre = -1;
     return p;
 }
+
 
