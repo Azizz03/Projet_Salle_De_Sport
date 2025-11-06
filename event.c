@@ -3,7 +3,7 @@
 #include <string.h>
 
 //////////////////////
-// GESTION �V�NEMENTS
+// GESTION ÉVÉNEMENTS
 //////////////////////
 
 int ajouter_event(char *filename, event e)
@@ -118,18 +118,34 @@ event chercher_event(char *filename, int id)
 
 int ajouter_participation(char *filename, participation p)
 {
+    static int CAPACITE_MAX = 50;
+
+    if (CAPACITE_MAX <= 0)
+    {
+        printf("  L'événement est complet. Impossible d'ajouter la participation.\n");
+        return 0;
+    }
+
     FILE *f = fopen(filename, "a");
     if (f != NULL)
     {
         fprintf(f, "%d %s %s %s %d %s %s %d %d %d %d %.2f %s\n",
                 p.id_membre, p.nom, p.prenom, p.sexe,
-                p.id_event, p.nom_event, p.type_event,
+                e.id_event, e.nom_event, e.type_event,
                 p.jour, p.mois, p.annee, p.heure, p.prix, p.salle);
+
         fclose(f);
+
+        CAPACITE_MAX--; // une place en moins après ajout réussi
+        printf(" Participation ajoutée. Places restantes : %d\n", CAPACITE_MAX);
+
         return 1;
     }
+
+    printf(" Erreur lors de l’ouverture du fichier.\n");
     return 0;
 }
+
 
 int supprimer_participation(char *filename, int id_membre, int id_event)
 {
@@ -186,3 +202,4 @@ participation chercher_participation(char *filename, int id_membre, int id_event
         p.id_membre = -1;
     return p;
 }
+
