@@ -16,27 +16,29 @@ int choix
         { do {
         }while(choix<0 || choix >6);
          switch(choix){
-             case 1:
+             case ajout :
 
     int x = ajouter("cours.txt", c1);
     if (x) printf("\nAjout réussi"); else printf("\nErreur ajout");
-           case 2:
+           case modif :
     x = modifier("cours.txt", 1, c2);
     if (x) printf("\nModification réussie"); else printf("\nErreur modification");
-             case 3:
+             case suprim :
     x = supprimer("cours.txt", 2);
     if (x) printf("\nSuppression réussie"); else printf("\nErreur suppression");
-             case 4 :
+             case chercher :
     c3 = chercher("cours.txt", 1);
     if (c3.id != -1)
         printf("\nCours trouvé : %s (%s - %s)", c3.nom_c, c3.type_c, c3.jour_c);
     else
         printf("\nCours introuvable");
-             case 5:
+             case sinscrire :
     sinscrire("cours.txt", 1, "M001");
+     printf("\nInscription  enregistrées.\n");
+             case reserver:
     reserver("cours.txt", 1, "C002");
 
-    printf("\nInscription et réservation enregistrées.\n");
+    printf("\n réservation enregistrées.\n");
          }
     return 0;
 }
