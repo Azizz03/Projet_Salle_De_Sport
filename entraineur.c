@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "entraineur.h"
+#include ­<gtk/gtk.h­­>
 
 int ajouter(char *filename, entraineur e) {
     FILE *f = fopen(filename, "a");
@@ -90,3 +91,90 @@ entraineur chercher(char *filename, int id) {
         e.id = -1;
     return e;
 }
+
+
+
+int ajouter_reservation_cours(char* filename, char* equip_file, reservation_cours r) {
+    FILE* file = fopen(filename, "a");
+    if (file == NULL) {
+        printf("Erreur d'ouverture du fichier %s\n", filename);
+        return -1; // Retourne une erreur
+    }
+
+    // Ajout de la réservation au fichier
+    fprintf(file, "%d,%d,%s,%s,%s,%d\n", r.reservation_id, r.equipment_id, r.coach_name, r.course_name, r.reservation_date, r.reserved_qty);
+
+    fclose(file);
+    return 0; // Réussi
+}
+
+// Fonction pour supprimer une réservation de cours
+int supprimer_reservation_cours(char* filename, int reservation_id) {
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Erreur d'ouverture du fichier %s\n", filename);
+        return -1;
+    }
+
+    FILE* temp = fopen("temp.txt", "w");
+    if (temp == NULL) {
+        printf("Erreur d'ouverture du fichier temporaire\n");
+        fclose(file);
+        return -1;
+    }
+
+    reservation_cours r;
+    int found = 0;
+    while (fscanf(file, "%d,%d,%49[^,],%49[^,],%19[^,],%d\n", &r.reservation_id, &r.equipment_id, r.coach_name, r.course_name, r.reservation_date, &r.reserved_qty) != EOF) {
+        if (r.reservation_id != reservation_id) {
+            fprintf(temp, "%d,%d,%s,%s,%s,%d\n", r.reservation_id, r.equipment_id, r.coach_name, r.course_name, r.reservation_date, r.reserved_qty);
+        } else {
+            found = 1; // Suppression effectuée
+        }
+    }
+
+    fclose(file);
+    fclose(temp);
+
+    if (found) {
+        remove(filename); // Supprimer l'ancien fichier
+        rename("temp.txt", filename); // Renommer le fichier temporaire
+        return 0; // Réussi
+    } else {
+        remove("temp.txt");
+        return -1; // Réservation non trouvée
+    }
+}
+
+// Fonction pour rechercher une réservation de cours
+reservation_cours rechercher_reservation_cours(char* filename, int reservation_id) {
+    reservation_cours res = {0}; // Initialisation à zéro
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Erreur d'ouverture du fichier %s\n", filename);
+        return res; // Retourne une réservation vide en cas d'erreur
+    }
+
+    while (fscanf(file, "%d,%d,%49[^,],%49[^,],%19[^,],%d\n", &res.reservation_id, &res.equipment_id, res.coach_name, res.course_name, res.reservation_date, &res.reserved_qty) != EOF) {
+        if (res.reservation_id == reservation_id) {
+            fclose(file);
+            return res; // Retourne la réservation trouvée
+        }
+    }
+
+    fclose(file);
+    return res; // Retourne une réservation vide si non trouvé
+}
+
+        fprintf(f, "%d;%s;%s;%s;%s;%s;%d;%c\n", 
+                i->i_id, i->nom, i->prenom, i->date_naissance, 
+                i->numero_tel, i->specialite, 
+                i->nb_heures, i->sexe);
+        fclose(f);
+    } else {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+    }
+
+    return *i;
+}
+
