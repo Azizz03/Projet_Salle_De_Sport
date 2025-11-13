@@ -22,20 +22,20 @@ typedef struct
 typedef struct {     
     int reservation_id;         
     int equipment_id;          
-    char coach_name[50];        
-    char course_name[50];       
+    char coach_id[50];        
+    char cour_id[50];       
     char reservation_date[20];  
     int reserved_qty;           
-} reservation_cours;
+} reservation;
 
-int ajouter(char *filename, entraineur e);
-int modifier(char *filename, int id, entraineur nouv);
-int supprimer(char *filename, int id);
-entraineur chercher(char *filename, int id);
+int ajouter(char *entraineur.txt, entraineur e);
+int modifier(char *entraineur.txt, int id, entraineur nouv);
+int supprimer(char *entraineur.txt, int id);
+entraineur chercher(char *entraineur.txt, int id);
 
-int ajouter_reservation_cours(char* filename, char* equip_file, reservation_cours r) ;
-int supprimer_reservation_cours(char* filename, int reservation_id) ;
-reservation_cours rechercher_reservation_cours(char* filename, int reservation_id);
+int ajouter_reservation(char* entraineur.tx, char* equip_file, reservation_cours r) ;
+int supprimer_reservation(char* entraineur.txt, int reservation_id) ;
+reservation rechercher_reservation_cours(char* entraineur.txt, int reservation_id);
 
 
 
