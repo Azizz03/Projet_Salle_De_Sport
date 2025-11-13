@@ -17,6 +17,7 @@ typedef struct
     char num_tel[20];
     int cours_privee;
     char centre[30];
+    char ville_pref[30];
 } entraineur;
 typedef struct {     
     int reservation_id;         
