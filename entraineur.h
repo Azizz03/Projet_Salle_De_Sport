@@ -1,11 +1,8 @@
-#ifndef ENTRAINEUR_H_INCLUDED
-#define ENTRAINEUR_H_INCLUDED
-#include <stdio.h>
-typedef struct {
-    int jour,mois,annee;
-}date; 
+typedef struct { 
+int jour, mois, annee;
+} date;
 
-typedef struct 
+typedef struct {
     int id;
     char nom[30];
     char prenom[30];
@@ -15,18 +12,38 @@ typedef struct
     date date_inscription;
     char email[50];
     char num_tel[20];
-    int cours_privee;
+    int cours_privee; // 0 = non, 1 = oui
     char centre[30];
     char ville_pref[30];
 } entraineur;
-typedef struct {     
-    int reservation_id;         
-    int equipment_id;          
-    char coach_id[50];        
-    char cour_id[50];       
-    char reservation_date[20];  
-    int reserved_qty;           
+
+typedef struct {
+    int reservation_id;
+    int equipment_id;
+    char coach_id[50];
+    char cour_id[50];
+    char reservation_date[20];
+    int reserved_qty;
 } reservation;
+
+// -------- FONCTIONS --------
+
+// Entraîneur
+int ajouter(const char *filename, entraineur e);
+int modifier(const char *filename, int id, entraineur nouv);
+int supprimer(const char *filename, int id);
+entraineur chercher(const char *filename, int id);
+
+// Réservation
+int ajouter_reservation(const char *filename, reservation r);
+int supprimer_reservation(const char *filename, int reservation_id);
+reservation rechercher_reservation(const char *filename, int reservation_id);
+
+// Contrôle de saisie
+int valider_entraineur(entraineur e);
+
+#endif
+
 
 int ajouter(char *entraineur.txt, entraineur e);
 int modifier(char *entraineur.txt, int id, entraineur nouv);
