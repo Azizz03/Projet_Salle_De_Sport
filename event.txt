@@ -1,0 +1,9 @@
+3|Dance|(type)|26|13|2025|13|45|15|45|10.00|Zen|100
+4|MuscuLibre|AccèsLibre|13|11|2025|14|0|20|0|5.00|SalleForce|100
+6|PilatesRelax|BienEtre|15|11|2025|8|0|9|0|9.50|SalleZen|100
+7|SpinningBoost|Cardio|16|11|2025|18|0|19|0|10.00|SalleBike|100
+8|BodyPump|Force|17|11|2025|19|0|20|0|11.00|SalleA|100
+9|BoxingTraining|Combat|18|11|2025|17|0|18|30|13.00|SalleFight|100
+11|GymShow|Competition|25|9|2025|10|0|15|0|10.00|SalleA|100
+12|weDance|Special|16|2|2026|15|0|16|30|15.00|Zen|100
+
