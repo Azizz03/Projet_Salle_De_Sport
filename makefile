@@ -1,6 +1,6 @@
-prog:membre.o main_membre.o
-	gcc membre.o main_membre.o -o prog
-main_membre.o:main_membre.c
-	gcc -c main_membre.c
+prog3:event.o mainev.o
+	gcc event.o mainev.o -o prog3 -g
+main_membre.o:mainev.c
+	gcc -c mainev.c -g
 membre.o:membre.c
-	gcc -c membre.c
+	gcc -c event.c -g

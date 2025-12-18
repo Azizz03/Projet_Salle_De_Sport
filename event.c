@@ -19,7 +19,7 @@ int ajouter_event(char *filename, event e)
         return 1;
     }
     return 0;
-}
+}s
 
 int modifier_event(char *filename, int id, event nouv)
 {
@@ -107,16 +107,61 @@ event chercher_event(char *filename, int id)
         }
         fclose(f);
     }
-    if (!tr){
-        e.id = -1;
-    return e;}
+    if (tr!=0){
+        e.id = -1;}
+    return e;
 }
+nt afficher_event(char *filename)
+{
+    FILE *f = fopen(filename, "r");
+    event e;
+    int trouve = 0;
 
+    if (f == NULL)
+    {
+        printf(" Erreur : impossible d’ouvrir le fichier %s pour lecture.\n", filename);
+        return 0;
+    }
+
+    printf(" Liste des événements enregistrés :\n");
+     printf("------------------------------------------------------------\n");
+
+    while (fscanf(f, "%d %s %s %d %d %d %d %d %d %d %f %s %d",
+                  &e.id, e.nom, e.type,s
+                  &e.jour, &e.mois, &e.annee,
+                  &e.heure_debut_h, &e.heure_debut_m,
+                  &e.heure_fin_h, &e.heure_fin_m,
+                  &e.prix, e.salle, &e.capacite) != EOF)
+    {
+        trouve = 1;
+        printf("ID : %d\n", e.id);
+        printf("Nom : %s\n", e.nom);
+        printf("Type : %s\n", e.type);
+        printf("Date : %02d/%02d/%04d\n", e.jour, e.mois, e.annee);
+        printf("Heure : %02d:%02d - %02d:%02d\n",
+               e.heure_debut_h, e.heure_debut_m,
+               e.heure_fin_h, e.heure_fin_m);
+        printf("Salle : %s\n", e.salle);
+        printf("Prix : %.2f DT\n", e.prix);
+        printf("Capacité : %d places\n", e.capacite);
+        printf("------------------------------------------------------------\n");
+    }
+
+    fclose(f);
+
+    if (!trouve)
+    {
+        printf("  Aucun événement trouvé dans le fichier %s.\n", filename);
+        return 0;
+    }
+
+    return 1;
+}
 /////////////////////////////
 // GESTION DES PARTICIPATIONS
 /////////////////////////////
 
-/*int ajouter_participation(char *filename, participation p)
+int ajouter_participation(char *filename, participation p)
 {
     static int CAPACITE_MAX = 50;
 
@@ -129,9 +174,9 @@ event chercher_event(char *filename, int id)
     FILE *f = fopen(filename, "a");
     if (f != NULL)
     {
-        fprintf(f, "%d %s %s %s %d %s %s %d %d %d %d %.2f %s\n %d",
-                p.id_membre, p.nom, p.prenom, p.sexe,
-                e.id_event, e.nom_event, e.type_event,
+        fprintf(f, "%d %s %s %s %d %s %s %d %d %d %d %.2f %s %d \n" ,
+                p.id, p.nom, p.prenom, p.sexe,
+                e.id, e.nom, e.type,
                 p.jour, p.mois, p.annee, p.heure, p.prix, p.salle, p.capacite);
 
         fclose(f);
@@ -147,7 +192,7 @@ event chercher_event(char *filename, int id)
 }
 
 
-int supprimer_participation(char *filename, int id_membre, int id_event)
+/*int supprimer_participation(char *filename, int id_membre, int id_event)
 {
     int tr = 0;
     participation p;
@@ -157,16 +202,16 @@ int supprimer_participation(char *filename, int id_membre, int id_event)
     if (f != NULL && f2 != NULL)
     {
         while (fscanf(f, "%d %s %s %s %d %s %s %d %d %d %d %f %s %d\n",
-                      &p.id_membre, p.nom, p.prenom, p.sexe,
-                      &p.id_event, p.nom_event, p.type_event,
+                      &p.id, p.nom, p.prenom, p.sexe,
+                      &p.id, p.nom, p.type,
                       &p.jour, &p.mois, &p.annee, &p.heure, &p.prix, p.salle , p.capacite) != EOF)
         {
-            if (p.id_membre == id_membre && p.id_event == id_event)
+            if (p.id == id && p.id == id)
                 tr = 1;
             else
                 fprintf(f2, "%d %s %s %s %d %s %s %d %d %d %d %.2f %s %d\n",
-                        p.id_membre, p.nom, p.prenom, p.sexe,
-                        p.id_event, p.nom_event, p.type_event,
+                        p.id, p.nom, p.prenom, p.sexe,
+                        p.id, p.nom, p.type,
                         p.jour, p.mois, p.annee, p.heure, p.prix, p.salle, p.capacite);
         }
     }
@@ -176,9 +221,9 @@ int supprimer_participation(char *filename, int id_membre, int id_event)
     remove(filename);
     rename("nouv.txt", filename);
     return tr;
-}
+*/}
 
-participation chercher_participation(char *filename, int id_membre, int id_event)
+/*participation chercher_participation(char *filename, int id_membre, int id_event)
 {
     participation p;
     int tr = 0;
@@ -186,18 +231,18 @@ participation chercher_participation(char *filename, int id_membre, int id_event
     if (f != NULL)
     {
         while (fscanf(f, "%d %s %s %s %d %s %s %d %d %d %d %f %s\n %d",
-                      &p.id_membre, p.nom, p.prenom, p.sexe,
-                      &p.id_event, p.nom_event, p.type_event,
+                      &p.id, p.nom, p.prenom, p.sexe,
+                      &p.id, p.nom, p.type,
                       &p.jour, &p.mois, &p.annee, &p.heure, &p.prix, p.salle, p.capacite) != EOF)
         {
-            if (p.id_membre == id_membre && p.id_event == id_event)
+            if (p.id == id_membre && p.id == id)
             {
                 tr = 1;
                 break;
             }
         }
         fclose(f);
-    */}
+   */ }
     if (!tr)
         p.id_membre = -1;
     return p;

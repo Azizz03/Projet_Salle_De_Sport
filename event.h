@@ -23,7 +23,7 @@ int ajouter_event(char *filename, event e);
 int modifier_event(char *filename, int id, event nouv);
 int supprimer_event(char *filename, int id);
 event chercher_event(char *filename, int id);
-
+int afficher_event(char *filename);
 /*typedef struct
 {
     int id_membre;
@@ -39,10 +39,10 @@ event chercher_event(char *filename, int id);
     int heure;
     float prix;
     char salle[30];
-} participation;
+} participation;*/
 
 int ajouter_participation(char *filename, participation p);
-int supprimer_participation(char *filename, int id_membre, int id_event);
+/*int supprimer_participation(char *filename, int id_membre, int id_event);
 participation chercher_participation(char *filename, int id_membre, int id_event);
 */
 #endif // EVENT_H_INCLUDED
