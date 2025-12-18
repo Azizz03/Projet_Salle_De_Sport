@@ -1,0 +1,11 @@
+*.o
+prog
+a.out
+*.exe
+build/
+bin/
+obj/
+*~
+*.swp
+*.tmp
+*.log
