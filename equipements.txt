@@ -1,0 +1,4 @@
+333;Haltere;C3;Musculation;1;Réservé;C233;Rouge
+212;Velo Elliptique;C5;Cardio;1;Disponible;C508;Gris
+200;Tapis Roulante;C1;Cardio;1;Disponible;SC101;Noir
+12;Ballon;C1;Accessoire;4;Disponible;C102;Bleu
