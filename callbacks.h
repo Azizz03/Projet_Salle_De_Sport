@@ -134,3 +134,21 @@ on_check_intermediaire_toggled         (GtkToggleButton *togglebutton,
 void
 on_check_avance_toggled                (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
+
+
+
+void
+on_button_stat_type_clicked            (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_button_calculer_clicked             (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_button_visualiser_clicked           (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_button_stat_heure_pointe_clicked    (GtkButton       *button,
+                                        gpointer         user_data);
