@@ -1,0 +1,4 @@
+1 chouchane khayri B khayri.chouchene@gmail.com 6 Decembre 1999 mensuel 70.00 13.00 16.00 Homme 185 gain_masse_musculaire non 95632155 21 0 
+2 zerria asma E asma.zerria@gmail 9 Avril 2003 Annuel 66.00 6.00 7.00 Femme 160 garder_la_forme bonne_sante 95632145 20 1 
+3 ayed hela B hela.ayed@gmail 4 Septembre 2001 Annuel 50.00 18.00 5.00 Femme 160 garder_la_forme fumeuse 65231456 56 1 
+4 belarbi safia A safia.belarbi@gmail.com 5 Fevrier 1997 Annuel 50.00 7.00 18.00 Femme 155 garder_la_forme fatigue_rapide 98745632 40 1 

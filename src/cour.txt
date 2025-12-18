@@ -1,0 +1,8 @@
+789 butterfly relaxation amin enfants_filles moyenne Oui perte_de_poids 11 tapis salle1 centrec de_14_a_15 6 6 2025
+159 molla relaxation gouba adulte_mixte faible Non musculation 10 machine salle3 centrea de_10_a_12 6 7 2025
+789 dance relaxation sonia homme_adulte moyenne Oui perte_de_poids 10 tapis salle2 centrea de_14_a_15 7 2 2025
+852 morgin relaxation amina femme_adulte faible Oui souplesse 15 tapis_yoga salle3 centreb de_14_a_15 1 1 2025
+953 morgin relaxation amina femme_adulte faible Oui souplesse 15 tapis_yoga salle3 centreb de_10_a_12 1 1 2025
+2004 morgin relaxation amina femme_adulte faible Oui souplesse 15 tapis_yoga salle3 centreb de_20_a_22 1 1 2025
+2004 morgin relaxation amina femme_adulte faible Oui souplesse 15 tapis_yoga salle3 centreb de_20_a_22 1 1 2025
+123 uphoria relaxation  medali homme_adulte faible Oui souplesse 27 tapis salle2 centrec de_14_a_15 1 1 2025
