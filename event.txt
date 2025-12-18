@@ -1,4 +1,4 @@
-3|Dance|(type)|26|13|2025|13|45|15|45|10.00|Zen|100
+0|Dance|Cours spécial|26|13|2025|0|45|15|45|0.00|Zen|0
 4|MuscuLibre|AccèsLibre|13|11|2025|14|0|20|0|5.00|SalleForce|100
 6|PilatesRelax|BienEtre|15|11|2025|8|0|9|0|9.50|SalleZen|100
 7|SpinningBoost|Cardio|16|11|2025|18|0|19|0|10.00|SalleBike|100
@@ -7,3 +7,8 @@
 11|GymShow|Competition|25|9|2025|10|0|15|0|10.00|SalleA|100
 12|weDance|Special|16|2|2026|15|0|16|30|15.00|Zen|100
 
+1765994253|Yoga|(type)|19|0|2025|0|10|12|0|10.00|A|100
+0|gymParty|Cours spécial|13|2|2026|0|0|0|0|15.00|Dance|0
+0|dance flow|Cours spécial|15|2|2026|0|0|19|0|10.00|Dance|0
+50065|partysmash|Cours spécial|10|2|2026|20|0|0|0|20.00|Dance|100
+50909|Xchallenge|Compétition|23|13|2025|12|0|20|0|10.00|Fight|100
